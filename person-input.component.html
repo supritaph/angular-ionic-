@@ -1,0 +1,12 @@
+<p>local refences and understanding two way binding</p>
+
+
+<!-- <label for="name">name</label> -->
+<!-- <input type="text" id="name" #personNameel> -->
+<!-- <button (click)="onpersoncreate(personNameel.value)">create </button> -->
+
+
+<label for="name">name</label>
+<input type="text" id="name" [(ngmodel)]="personnameel">
+
+<button (click)="onpersoncreate()">create </button>
