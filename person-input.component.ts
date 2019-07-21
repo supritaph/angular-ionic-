@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component ,Output,EventEmitter} from '@angular/core';
+import { OnInit } from '@angular/core';
+
+import { PersonsService } from './persons.service';
 
 
 @Component({
@@ -19,16 +22,24 @@ export class PersonInputComponent{
     }
 }
 */
-
-
-export class PersonInputComponent{
-
+export class PersonInputComponent implements OnInit{
+@Output() PersonCreate= new EventEmitter<string>();
     personnameel='';
+    personList: string[];
     onpersoncreate()
 {
     console.log("created" +this.personnameel);
+    this.PersonCreate.emit(this.personnameel);
     this.personnameel='';
-
     
+}
+
+ngOnInit() {
+    this.personList = this.prsService.persons;
+  }
+
+  onRemovePerson(personName: string) {
+    this.prsService.removePerson(personName);
+  }
 }
 }
